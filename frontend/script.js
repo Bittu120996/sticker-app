@@ -1,4 +1,4 @@
-const BACKEND_URL = "https://your-backend-url.onrender.com/upload/";  // Change this to your Render API
+const BACKEND_URL = "https://sticker-app-k72q.onrender.com/upload/";  // Change this to your Render API
 
 function generateSticker() {
   const fileInput = document.getElementById('imageUpload');
@@ -25,7 +25,7 @@ function generateSticker() {
     console.log("File uploaded:", data);
 
     // Now load the uploaded image from the backend and draw
-    const imageUrl = `https://your-backend-url.onrender.com/download/${data.filename}`;
+    const imageUrl = `https://sticker-app-k72q.onrender.com/download/${data.filename}`;
     const img = new Image();
     img.crossOrigin = "Anonymous";  // Important for CORS
 
