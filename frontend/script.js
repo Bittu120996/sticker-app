@@ -35,27 +35,35 @@ const BACKEND_URL = `${API_URL}/upload/`;
 
     // Now load the uploaded image from the backend and draw
     const imageUrl = `https://sticker-app-k72q.onrender.com/download/${data.filename}`;
-    const img = new Image();
-    img.crossOrigin = "Anonymous";  // Important for CORS
+   const img = new Image();
+     img.crossOrigin = "Anonymous"; // Important for cross-origin image loading
+     img.onload = function() {
+    // Set canvas size to match the image
+    canvas.width = img.width;
+    canvas.height = img.height;
 
-    img.onload = function() {
-      canvas.width = img.width;
-      canvas.height = img.height;
-      ctx.drawImage(img, 0, 0);
+    // Draw the uploaded image
+    ctx.drawImage(img, 0, 0);
 
-      // Add text overlay
-      ctx.font = "50px Comic Sans MS";
-      ctx.fillStyle = "#ffea00";
-      ctx.strokeStyle = "black";
-      ctx.lineWidth = 3;
-      ctx.textAlign = "center";
-      ctx.strokeText(text, canvas.width / 2, canvas.height - 60);
-      ctx.fillText(text, canvas.width / 2, canvas.height - 60);
+    // Add funny sticker text on the image
+    ctx.font = "50px Comic Sans MS";
+    ctx.fillStyle = "#ffea00";   // Yellow Text
+    ctx.strokeStyle = "black";   // Black outline
+    ctx.lineWidth = 3;
+    ctx.textAlign = "center";
 
-      document.getElementById('downloadBtn').style.display = 'block';
-      document.getElementById('downloadBtn').href = canvas.toDataURL();
-    };
-    img.src = imageUrl;
+    // Add the text at the bottom
+    ctx.strokeText(text, canvas.width / 2, canvas.height - 60);
+    ctx.fillText(text, canvas.width / 2, canvas.height - 60);
+
+    // Show Download Button
+    document.getElementById('downloadBtn').style.display = 'block';
+    document.getElementById('downloadBtn').href = canvas.toDataURL();
+};
+
+// Set the image URL (backend download URL)
+img.src = imageUrl;
+
   })
   .catch(err => {
     console.error("Upload failed:", err);
