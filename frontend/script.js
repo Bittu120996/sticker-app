@@ -21,6 +21,7 @@ function generateSticker() {
     body: formData
 })
   const BACKEND_URL = `${import.meta.env.VITE_API_URL}/upload/`;
+const BACKEND_URL = `${API_URL}/upload/`;
 
 
 
