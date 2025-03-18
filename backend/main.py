@@ -9,6 +9,10 @@ app = FastAPI()
 async def root():
     return {"message": "Funny Sticker API is running!"}
 
+@app.api_route("/", methods=["GET", "HEAD"])
+async def root():
+    return {"message": "Funny Sticker API is running!"}
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
