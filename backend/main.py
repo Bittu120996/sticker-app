@@ -5,6 +5,9 @@ import shutil
 import os
 
 app = FastAPI()
+@app.get("/")
+async def root():
+    return {"message": "Funny Sticker API is running!"}
 
 app.add_middleware(
     CORSMiddleware,
