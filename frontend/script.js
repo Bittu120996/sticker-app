@@ -15,6 +15,12 @@ function generateSticker() {
   // Upload to Backend API
   const formData = new FormData();
   formData.append("file", file);
+  
+  fetch("https://sticker-app-k72q.onrender.com/upload/", {
+    method: "POST",
+    body: formData
+})
+
 
   fetch(BACKEND_URL, {
     method: "POST",
