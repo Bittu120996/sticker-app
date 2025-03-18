@@ -20,6 +20,8 @@ function generateSticker() {
     method: "POST",
     body: formData
 })
+  const BACKEND_URL = `${import.meta.env.VITE_API_URL}/upload/`;
+
 
 
   fetch(BACKEND_URL, {
